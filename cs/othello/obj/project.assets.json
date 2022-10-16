@@ -2368,11 +2368,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\badac\\othello challenge\\my-solution\\AO-Othello-Challenge\\cs\\othello\\othello.csproj",
+      "projectUniqueName": "C:\\Users\\badac\\othello challenge\\my-solution\\AO-othello-challenge-final\\AtomicObject-Othello-Challenge\\cs\\othello\\othello.csproj",
       "projectName": "othello",
-      "projectPath": "C:\\Users\\badac\\othello challenge\\my-solution\\AO-Othello-Challenge\\cs\\othello\\othello.csproj",
+      "projectPath": "C:\\Users\\badac\\othello challenge\\my-solution\\AO-othello-challenge-final\\AtomicObject-Othello-Challenge\\cs\\othello\\othello.csproj",
       "packagesPath": "C:\\Users\\badac\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\badac\\othello challenge\\my-solution\\AO-Othello-Challenge\\cs\\othello\\obj\\",
+      "outputPath": "C:\\Users\\badac\\othello challenge\\my-solution\\AO-othello-challenge-final\\AtomicObject-Othello-Challenge\\cs\\othello\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -2393,8 +2393,8 @@
         "netcoreapp2.1": {
           "targetAlias": "netcoreapp2.1",
           "projectReferences": {
-            "C:\\Users\\badac\\othello challenge\\my-solution\\AO-Othello-Challenge\\cs\\ai\\ai.csproj": {
-              "projectPath": "C:\\Users\\badac\\othello challenge\\my-solution\\AO-Othello-Challenge\\cs\\ai\\ai.csproj"
+            "C:\\Users\\badac\\othello challenge\\my-solution\\AO-othello-challenge-final\\AtomicObject-Othello-Challenge\\cs\\ai\\ai.csproj": {
+              "projectPath": "C:\\Users\\badac\\othello challenge\\my-solution\\AO-othello-challenge-final\\AtomicObject-Othello-Challenge\\cs\\ai\\ai.csproj"
             }
           }
         }

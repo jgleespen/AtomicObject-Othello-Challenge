@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "aGc76zgPjY8ykGjM7Lbk/aUCn979jvjmSQtUQzP6YPt2PW5dt2v7YbjWcc7wmnZ6WLioiYRofhgOKkRTp5vRyg==",
+  "dgSpecHash": "BkUz521NRVqkkcdjIwiVF6M3iBXogVb2r8bX8tr0ovD4X1v1TiM1rR1xLzfOFuwL/DouaPw7YlNw4Sq4+ewl/A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\badac\\othello challenge\\my-solution\\AO-Othello-Challenge\\cs\\othello\\othello.csproj",
+  "projectFilePath": "C:\\Users\\badac\\othello challenge\\my-solution\\AO-othello-challenge-final\\AtomicObject-Othello-Challenge\\cs\\othello\\othello.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\badac\\.nuget\\packages\\commandlineparser\\2.3.0\\commandlineparser.2.3.0.nupkg.sha512",
     "C:\\Users\\badac\\.nuget\\packages\\microsoft.netcore.app\\2.1.0\\microsoft.netcore.app.2.1.0.nupkg.sha512",

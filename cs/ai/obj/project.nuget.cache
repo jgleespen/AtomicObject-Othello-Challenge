@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "vyMCQ53wWkhGxatp1o03FtrjtwC2EMfPkozxGax54lsJGLXe7vcd5XXVJ0WJnxEPpRRV+qd+Y3TTgsxBn66MlA==",
+  "dgSpecHash": "0hb0FsbnHCeiEKuXwOF1f53KgzO3lobw4R/puKk210ixZle9nhkAibQaJWBrUjUDdW31v70nvnCPoSLXQzUYZg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\badac\\othello challenge\\my-solution\\AO-Othello-Challenge\\cs\\ai\\ai.csproj",
+  "projectFilePath": "C:\\Users\\badac\\othello challenge\\my-solution\\AO-othello-challenge-final\\AtomicObject-Othello-Challenge\\cs\\ai\\ai.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\badac\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Users\\badac\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"

@@ -18,3 +18,13 @@ C:\Users\badac\othello challenge\my-solution\AO-Othello-Challenge\cs\ai\obj\Debu
 C:\Users\badac\othello challenge\my-solution\AO-Othello-Challenge\cs\ai\obj\Debug\netstandard2.0\ai.csproj.CoreCompileInputs.cache
 C:\Users\badac\othello challenge\my-solution\AO-Othello-Challenge\cs\ai\obj\Debug\netstandard2.0\ai.dll
 C:\Users\badac\othello challenge\my-solution\AO-Othello-Challenge\cs\ai\obj\Debug\netstandard2.0\ai.pdb
+C:\Users\badac\othello challenge\my-solution\AO-othello-challenge-final\AtomicObject-Othello-Challenge\cs\ai\bin\Debug\netstandard2.0\ai.deps.json
+C:\Users\badac\othello challenge\my-solution\AO-othello-challenge-final\AtomicObject-Othello-Challenge\cs\ai\bin\Debug\netstandard2.0\ai.dll
+C:\Users\badac\othello challenge\my-solution\AO-othello-challenge-final\AtomicObject-Othello-Challenge\cs\ai\bin\Debug\netstandard2.0\ai.pdb
+C:\Users\badac\othello challenge\my-solution\AO-othello-challenge-final\AtomicObject-Othello-Challenge\cs\ai\obj\Debug\netstandard2.0\ai.csproj.AssemblyReference.cache
+C:\Users\badac\othello challenge\my-solution\AO-othello-challenge-final\AtomicObject-Othello-Challenge\cs\ai\obj\Debug\netstandard2.0\ai.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\badac\othello challenge\my-solution\AO-othello-challenge-final\AtomicObject-Othello-Challenge\cs\ai\obj\Debug\netstandard2.0\ai.AssemblyInfoInputs.cache
+C:\Users\badac\othello challenge\my-solution\AO-othello-challenge-final\AtomicObject-Othello-Challenge\cs\ai\obj\Debug\netstandard2.0\ai.AssemblyInfo.cs
+C:\Users\badac\othello challenge\my-solution\AO-othello-challenge-final\AtomicObject-Othello-Challenge\cs\ai\obj\Debug\netstandard2.0\ai.csproj.CoreCompileInputs.cache
+C:\Users\badac\othello challenge\my-solution\AO-othello-challenge-final\AtomicObject-Othello-Challenge\cs\ai\obj\Debug\netstandard2.0\ai.dll
+C:\Users\badac\othello challenge\my-solution\AO-othello-challenge-final\AtomicObject-Othello-Challenge\cs\ai\obj\Debug\netstandard2.0\ai.pdb

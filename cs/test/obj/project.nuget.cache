@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "7TbpeOpShLox1Q6Qdyz3givb2EkJM9iETvkXdR/zBgqoz/G47KPcdTSJNzzRU6r1r9Do4TszV5e+Uye0bZk3JQ==",
+  "dgSpecHash": "vAzYvQUFoXYyDDBuT/I8q86X/9jeYtfJVesnGHY63xZafl2R2cWbeXHHA0pTE1VowPfrYOagfmSG80kmerV3iw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\badac\\othello challenge\\my-solution\\AO-Othello-Challenge\\cs\\test\\test.csproj",
+  "projectFilePath": "C:\\Users\\badac\\othello challenge\\my-solution\\AO-othello-challenge-final\\AtomicObject-Othello-Challenge\\cs\\test\\test.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\badac\\.nuget\\packages\\fluentassertions\\5.4.2\\fluentassertions.5.4.2.nupkg.sha512",
     "C:\\Users\\badac\\.nuget\\packages\\microsoft.codecoverage\\15.8.0\\microsoft.codecoverage.15.8.0.nupkg.sha512",
