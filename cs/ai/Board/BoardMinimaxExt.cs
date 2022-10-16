@@ -6,7 +6,7 @@ namespace ai.Board
 {
     public static class BoardMinimaxExt
     {
-        public const int DEPTH_LIMIT = 5;
+        private const int DepthLimit = 5;
         
         /*I implemented minimax using a heuristic that tests potential scores and then returns their difference
         This evaluates scores utilizing functions from PerformMoveOnBoard.cs to check possible moves*/
@@ -82,7 +82,7 @@ namespace ai.Board
         )
         {
             //If we have reached our maximum desired search depth - evaluate score using Heuristic function
-            if (depth == DEPTH_LIMIT)
+            if (depth == DepthLimit)
             {
                 return board.MinimaxHeuristic();
             }
