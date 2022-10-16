@@ -1,0 +1,1 @@
+# AtomicObject-Othello-Challenge
