@@ -4,17 +4,21 @@ namespace ai.Board
 {
     public class Board : ICloneable
     {
-        public int[][] GameBoard { get; set; }
-        public int Player { get; set; }
-        public int OtherPlayer { get; set; }
+        public const int OtherPlayerDefault = 1;
+        public int[][] GameBoard { get; }
+        public int Player { get; }
+        public int OtherPlayer { get; }
 
         public Board(int player, int[][] board)
         {
             Player = player;
-            OtherPlayer = 1;
+            GameBoard = board;
+
+            OtherPlayer = OtherPlayerDefault;
+
+            //If player is 1 switch OtherPlayer
             if (player == 1)
                 OtherPlayer = 2;
-            GameBoard = board;
         }
         public object Clone()
         {

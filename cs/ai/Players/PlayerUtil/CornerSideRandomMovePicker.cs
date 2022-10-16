@@ -7,21 +7,28 @@ namespace ai.Players.PlayerUtil
     //Checks for corners, then sides, then returns random move if no corners or sides are present
     public static class CornerSideRandomMovePicker
     {
+        private const int UpperCornerRow = 0;
+        private const int LowerCornerRow = 7;
+
+        private const int StartCornerCol = 0;
+        private const int EndCornerCol = 7;
+
         //Check if there is a corner move to be made
         public static Coordinate CheckCorner(List<Coordinate> legalMoves)
         {
+            //Check legal moves for corner moves
             foreach (var c in legalMoves)
             {
-                if (c.Row == 0 && c.Col == 0)
+                if (c.Row == UpperCornerRow && c.Col == StartCornerCol)
                     return c;
 
-                if (c.Row == 7 && c.Col == 0)
+                if (c.Row == LowerCornerRow && c.Col == StartCornerCol)
                     return c;
 
-                if (c.Row == 0 && c.Col == 7)
+                if (c.Row == UpperCornerRow && c.Col == EndCornerCol)
                     return c;
 
-                if (c.Row == 7 && c.Col == 7)
+                if (c.Row == LowerCornerRow && c.Col == EndCornerCol)
                     return c;
             }
 
@@ -58,6 +65,8 @@ namespace ai.Players.PlayerUtil
 
             return RandomPick(legalMoves);
         }
+        
+        
         //Randomly pick a move from the legal moves list
         public static int[] RandomPick(List<Coordinate> legalMoveList)
         {

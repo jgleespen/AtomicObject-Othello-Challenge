@@ -1,6 +1,6 @@
 ﻿using ai.Board.Models;
 using ai.Players;
-using static ai.Players.PlayerUtil.InBoundsUtil;
+using static ai.Board.BoardValidMoveExt;
 namespace ai.Board
 {
     public static class BoardPerformMoveExt
@@ -10,8 +10,7 @@ namespace ai.Board
          * A board bound is hit (false)
          * An empty spot is hit (false)
          * Or until a player piece is hit (true)
-         * Then performs the move by passing in a board to Flip ()
-         */
+         * Then performs the move by passing in a board to Flip ()*/
         public static void DoMove(
             this Board board,
             Coordinate coord
@@ -20,35 +19,35 @@ namespace ai.Board
             int row = coord.Row;
             int col = coord.Col;
 
-            //check south
+            //Check south
             if (board.CheckToFlip(row - 1, col, -1, 0))  
                 board.Flip(row - 1, col, -1, 0);
 
-            //check north
+            //Check north
             if (board.CheckToFlip(row + 1, col, 1, 0))
                 board.Flip(row + 1, col, 1, 0);
 
-            //check west
+            //Check west
             if (board.CheckToFlip(row, col - 1, 0, -1))
                 board.Flip(row, col - 1, 0, -1);
 
-            //check east
+            //Check east
             if (board.CheckToFlip( row, col + 1, 0, 1))
                 board.Flip(row, col + 1, 0, 1);
 
-            //check south west
+            //Check south west
             if (board.CheckToFlip(row - 1, col - 1, -1, -1))
                 board.Flip(row - 1, col - 1, -1, -1);
 
-            //check north west
+            //Check north west
             if (board.CheckToFlip(row + 1, col - 1, 1, -1))
                 board.Flip(row + 1, col - 1, 1, -1);
 
-            //check south east
+            //Check south east
             if (board.CheckToFlip(row - 1, col + 1, -1, 1))
                 board.Flip(row - 1, col + 1, -1, 1);
 
-            //check south west
+            //Check south west
             if (board.CheckToFlip(row + 1, col + 1, 1, 1))
                 board.Flip(row + 1, col + 1, 1, 1);
         }
@@ -69,16 +68,16 @@ namespace ai.Board
             int changeInCol
         )
         {
-            //check our coordinate is in bounds
+            //Check our coordinate is in bounds
             if (InBounds(row, col)) return false;
 
-            //check for empty coordinate
+            //Check for empty coordinate
             if (board.GameBoard[row][col] != board.OtherPlayer) return false;
 
-            //check if we reached our player - true base case
+            //Check if we reached our player - true base case
             if (board.GameBoard[row][col] == board.Player) return true;
 
-            //check next next potential end coordinate is in bounds
+            //Check next next potential end coordinate is in bounds
             if (InBounds(row + changeInRow, col + changeInCol)) return false;
 
             return CheckToFlip(
@@ -95,8 +94,7 @@ namespace ai.Board
          * Loop over sub array on board while the current place is held by an enemy
          * Flip each piece
          * Increment until bound is reached or we reach our own piece
-         * Loop ends
-         */
+         * Loop ends*/
         private static void Flip(
             this Board board,
             int row,
@@ -105,14 +103,14 @@ namespace ai.Board
             int changeInCol
         )
         {
-            //check bounds
+            //Check bounds
             if (InBounds(row, col)) return;
 
             while (board.GameBoard[row][col] == board.OtherPlayer)
             {
                 board.GameBoard[row][col] = board.Player;
 
-                //check next potential end coordinate is in bounds
+                //Check next potential end coordinate is in bounds
                 if (InBounds(row + changeInRow, col + changeInCol)) return;
 
                 row += changeInRow;

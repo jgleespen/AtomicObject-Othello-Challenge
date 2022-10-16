@@ -6,8 +6,10 @@ namespace ai.Board
 {
     public static class BoardMinimaxExt
     {
-        //I implemented minimax using a heuristic that tests potential scores and then returns their difference
-        //This evaluates scores utilizing functions from PerformMoveOnBoard.cs to check possible moves
+        public const int DEPTH_LIMIT = 5;
+        
+        /*I implemented minimax using a heuristic that tests potential scores and then returns their difference
+        This evaluates scores utilizing functions from PerformMoveOnBoard.cs to check possible moves*/
         private static int MinimaxHeuristic(this Board board)
         {
             var otherPlayer = 1;
@@ -34,10 +36,9 @@ namespace ai.Board
             return total;
         }
         
-        /* This function recursively makes moves on a copy of our current game board
+        /*This function recursively makes moves on a copy of our current game board
          To find the best potential minimax value for a move. Once our move is found it is
-         returned as a Coordinate.
-         */
+         returned as a Coordinate.*/
         public static Coordinate ChooseMinimax(
             this Board board
         )
@@ -45,22 +46,22 @@ namespace ai.Board
             //Get a list of legal moves
             var legalMoves = board.FindAllLegalMoves();
             
-            var bestMoveValue = Int64.MinValue; //holds best move value
-            var bestCoord = legalMoves[0]; //holds best coordinate
+            var bestMoveValue = Int64.MinValue; //Holds best move value
+            var bestCoord = legalMoves[0]; //Holds best coordinate
 
 
             for (var i = 0; i < legalMoves.Count; i++)
             {
-                //copy current board state so we can perform recursion and test moves
+                //Copy current board state so we can perform recursion and test moves
                 var boardCopy = (Board) board.Clone();
 
-                //perform move on board using current iteration of legalMoves
+                //Perform move on board using current iteration of legalMoves
                 boardCopy.DoMove(legalMoves[i]);
 
                 //Search for best move with call to MinimaxValue, starting at depth of 1
                 var minimaxValue = boardCopy.MinimaxValue(boardCopy.Player, 1);
 
-                //if we have found a better move value update bestMoveValue and bestCoord
+                //If we have found a better move value update bestMoveValue and bestCoord
                 if (minimaxValue > bestMoveValue)
                 {
                     bestMoveValue = minimaxValue;
@@ -71,10 +72,9 @@ namespace ai.Board
             return bestCoord;
         }
 
-        /* Recursively performs moves for each player on a copy of the board
+        /*Recursively performs moves for each player on a copy of the board
          until our desired search depth is reached. Track minimum values for our opponent and
-         maximum values for our player.
-         */
+         maximum values for our player.*/
         private static Int64 MinimaxValue(
             this Board board,
             int currentPlayer,
@@ -82,12 +82,12 @@ namespace ai.Board
         )
         {
             //If we have reached our maximum desired search depth - evaluate score using Heuristic function
-            if ((depth == 5))
+            if (depth == DEPTH_LIMIT)
             {
                 return board.MinimaxHeuristic();
             }
 
-            /*identify current player to make a move for their pieces
+            /*Identify current player to make a move for their pieces
             this switches which player makes a move on each recursive call*/
             var opponent = 1;
             if (currentPlayer == 1)
@@ -99,7 +99,7 @@ namespace ai.Board
             //If currentPlayer is the opponent, minimize
             var bestMoveValue = Int64.MinValue;
 
-            //if currentPlayer is not our player, maximize 
+            //If currentPlayer is not our player, maximize 
             if (board.Player != currentPlayer)
                 bestMoveValue = Int64.MaxValue;
 
@@ -110,7 +110,7 @@ namespace ai.Board
                 //Perform move on copy of board
                 boardCopy.DoMove(legalMoves[i]);
 
-                //recursively call until depth is reached
+                //Recursively call until depth is reached
                 var minimaxValue = boardCopy.MinimaxValue( opponent, depth + 1);
 
                 //If we are on our player, update bestMoveValue with maximum value
@@ -119,6 +119,7 @@ namespace ai.Board
                     if (minimaxValue > bestMoveValue)
                         bestMoveValue = minimaxValue;
                 }
+                
                 //If we are on an opponent turn, update bestMoveValue with minimum value
                 else
                 {

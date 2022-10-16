@@ -22,3 +22,7 @@ Each bot depends on functions inside `ai.LegalMoveFunctions` to acquire a list o
 **Minimax Bot**
 `ai.Players.PlayerMinimaxPrioritizeCorners`
 * Same as above but corner spots will always be taken. 
+
+## Selecting Different Player
+* I left the other player models commented out in `Program.cs`, uncomment them to do runs and it should work by default.
+* Default player uses unbiased minimax
