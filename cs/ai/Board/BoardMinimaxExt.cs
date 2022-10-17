@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using ai.Board.Models;
 using ai.Players;
 
@@ -14,7 +15,7 @@ namespace ai.Board
         private static int MinimaxHeuristic(this Board board, int player)
         {
             var otherPlayer = 1;
-            if (board.Player == 1)
+            if (player == 1)
                 otherPlayer = 2;
 
             var playerScore = board.Score(player);
@@ -60,7 +61,7 @@ namespace ai.Board
                 boardCopy.DoMove(legalMoves[i]);
 
                 //Search for best move with call to MinimaxValue, starting at depth of 1
-                var minimaxValue = boardCopy.MinimaxValue(boardCopy.Player, boardCopy.OtherPlayer,1);
+                var minimaxValue = boardCopy.MinimaxValue(boardCopy.Player,boardCopy.OtherPlayer, 1);
 
                 //If we have found a better move value update bestMoveValue and bestCoord
                 if (minimaxValue > bestMoveValue)
@@ -89,16 +90,11 @@ namespace ai.Board
                 return board.MinimaxHeuristic(player);
             }
 
-            /*Identify current player to make a move for their pieces
-            this switches which player makes a move on each recursive call*/
+            //Identify next opponent
             var opponent = 1;
             if (currentPlayer == 1)
                 opponent = 2;
 
-            // var temp = board.Player;
-            // board.Player = opponent;
-            // board.OtherPlayer = temp;
-            
             //Get list of legal moves for our 'opponent' to check for best result
             var legalMoves = board.FindAllLegalMoves(currentPlayer, opponent);
 
