@@ -88,10 +88,10 @@ namespace othello
                     {
                         var gameMessage = JsonConvert.DeserializeObject<GameMessage>(line);
                         
-                        // var nextMove = PlayerMinimax.NextMove(gameMessage);
+                        var nextMove = PlayerMinimax.NextMove(gameMessage);
                         // var nextMove = PlayerMinimaxPrioritizeCorners.NextMove(gameMessage);
                         // var nextMove = PlayerPrioritizeCornersRandom.NextMove(gameMessage);
-                        var nextMove = PlayerMostFlips.NextMove(gameMessage);
+                        // var nextMove = PlayerMostFlips.NextMove(gameMessage);
                         
                         var serialized = JsonConvert.SerializeObject(nextMove);
                         streamWriter.Write(serialized + "\n");
