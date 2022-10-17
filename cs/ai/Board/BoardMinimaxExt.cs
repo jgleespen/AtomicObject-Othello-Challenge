@@ -6,8 +6,8 @@ namespace ai.Board
 {
     public static class BoardMinimaxExt
     {
-        //BRUH
-        private const int DepthLimit = 6;
+        //Increase this to increase search depth, above 5 is slow
+        private const int DepthLimit = 5;
 
         /*I implemented minimax using a heuristic that tests potential scores and then returns their difference
         This evaluates scores utilizing functions from PerformMoveOnBoard.cs to check possible moves*/
