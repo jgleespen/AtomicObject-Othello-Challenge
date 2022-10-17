@@ -88,10 +88,11 @@ namespace ai.Board
             {
                 board.GameBoard[row][col] = board.Player;
 
+                result++;
+                
                 //Check next potential end coordinate is in bounds
                 if (InBounds(row + changeInRow, col + changeInCol)) return result;
 
-                result++;
                 row += changeInRow;
                 col += changeInCol;
             }
