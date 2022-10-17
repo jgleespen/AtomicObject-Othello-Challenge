@@ -48,30 +48,27 @@ namespace ai.Board
             //Get a list of legal moves
             var legalMoves = board.FindAllLegalMoves();
 
-            var bestMoveValue = Int64.MinValue; //Holds best move value
+            var bestMoveValue = (long) -99999; //Holds best move value
             var bestCoord = legalMoves[0]; //Holds best coordinate
 
-            if (legalMoves.Count == 0)
+            for (var i = 0; i < legalMoves.Count; i++)
+            {
+                //Copy current board state so we can perform recursion and test moves
+                var boardCopy = (Board)board.Clone();
 
+                //Perform move on board using current iteration of legalMoves
+                boardCopy.DoMove(legalMoves[i]);
 
-                for (var i = 0; i < legalMoves.Count; i++)
+                //Search for best move with call to MinimaxValue, starting at depth of 1
+                var minimaxValue = boardCopy.MinimaxValue(boardCopy.Player, 1);
+
+                //If we have found a better move value update bestMoveValue and bestCoord
+                if (minimaxValue > bestMoveValue)
                 {
-                    //Copy current board state so we can perform recursion and test moves
-                    var boardCopy = (Board)board.Clone();
-
-                    //Perform move on board using current iteration of legalMoves
-                    boardCopy.DoMove(legalMoves[i]);
-
-                    //Search for best move with call to MinimaxValue, starting at depth of 1
-                    var minimaxValue = boardCopy.MinimaxValue(boardCopy.Player, 1);
-
-                    //If we have found a better move value update bestMoveValue and bestCoord
-                    if (minimaxValue > bestMoveValue)
-                    {
-                        bestMoveValue = minimaxValue;
-                        bestCoord = legalMoves[i];
-                    }
+                    bestMoveValue = minimaxValue;
+                    bestCoord = legalMoves[i];
                 }
+            }
 
             return bestCoord;
         }
@@ -108,11 +105,11 @@ namespace ai.Board
             else
             {
                 //If currentPlayer is the opponent, minimize
-                var bestMoveValue = Int64.MinValue;
+                var bestMoveValue = (long) -99999;
 
                 //If currentPlayer is not our player, maximize 
                 if (board.Player != currentPlayer)
-                    bestMoveValue = Int64.MaxValue;
+                    bestMoveValue = 99999;
 
                 for (var i = 0; i < legalMoves.Count; i++)
                 {
