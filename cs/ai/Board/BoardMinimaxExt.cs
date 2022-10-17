@@ -97,7 +97,7 @@ namespace ai.Board
             //Get list of legal moves for our 'opponent' to check for best result
             var legalMoves = board.FindAllLegalMoves();
 
-
+            //If there are no legal moves to make we need to skip the current players turn
             if (legalMoves.Count == 0)
             {
                 return board.MinimaxValue(opponent, depth + 1);
