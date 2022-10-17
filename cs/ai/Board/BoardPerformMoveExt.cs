@@ -1,6 +1,7 @@
 ﻿using ai.Board.Models;
 using ai.Players;
 using static ai.Board.BoardValidMoveExt;
+
 namespace ai.Board
 {
     public static class BoardPerformMoveExt
@@ -18,35 +19,35 @@ namespace ai.Board
         {
             int row = coord.Row;
             int col = coord.Col;
-
+            
             //Check south
             if (board.CheckToFlip(row - 1, col, -1, 0))  
                 board.Flip(row - 1, col, -1, 0);
-
+            
             //Check north
             if (board.CheckToFlip(row + 1, col, 1, 0))
                 board.Flip(row + 1, col, 1, 0);
-
+            
             //Check west
             if (board.CheckToFlip(row, col - 1, 0, -1))
                 board.Flip(row, col - 1, 0, -1);
-
+            
             //Check east
             if (board.CheckToFlip( row, col + 1, 0, 1))
                 board.Flip(row, col + 1, 0, 1);
-
+            
             //Check south west
             if (board.CheckToFlip(row - 1, col - 1, -1, -1))
                 board.Flip(row - 1, col - 1, -1, -1);
-
+            
             //Check north west
             if (board.CheckToFlip(row + 1, col - 1, 1, -1))
                 board.Flip(row + 1, col - 1, 1, -1);
-
+            
             //Check south east
             if (board.CheckToFlip(row - 1, col + 1, -1, 1))
                 board.Flip(row - 1, col + 1, -1, 1);
-
+            
             //Check south west
             if (board.CheckToFlip(row + 1, col + 1, 1, 1))
                 board.Flip(row + 1, col + 1, 1, 1);
@@ -73,10 +74,10 @@ namespace ai.Board
 
             //Check for empty coordinate
             if (board.GameBoard[row][col] != board.OtherPlayer) return false;
-
+            
             //Check if we reached our player - true base case
             if (board.GameBoard[row][col] == board.Player) return true;
-
+            
             //Check next next potential end coordinate is in bounds
             if (InBounds(row + changeInRow, col + changeInCol)) return false;
 
@@ -95,7 +96,7 @@ namespace ai.Board
          * Flip each piece
          * Increment until bound is reached or we reach our own piece
          * Loop ends*/
-        private static void Flip(
+        private static bool Flip(
             this Board board,
             int row,
             int col,
@@ -103,15 +104,12 @@ namespace ai.Board
             int changeInCol
         )
         {
-            //Check bounds
-            if (InBounds(row, col)) return;
-
-            while (board.GameBoard[row][col] == board.OtherPlayer)
+            while (true)
             {
-                board.GameBoard[row][col] = board.Player;
+                if (board.GameBoard[row][col] != board.OtherPlayer) return false;
+                if(InBounds(row, col)) return false;
 
-                //Check next potential end coordinate is in bounds
-                if (InBounds(row + changeInRow, col + changeInCol)) return;
+                board.GameBoard[row][col] = board.Player;
 
                 row += changeInRow;
                 col += changeInCol;

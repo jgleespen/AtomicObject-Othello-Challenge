@@ -117,6 +117,7 @@ namespace ai.Board
                     var boardCopy = (Board)board.Clone();
 
                     //Update boardCopy with current values for player and opponent - this could be cleaner
+                    //This is to update the board with the correct players moves
                     boardCopy.Player = currentPlayer;
                     boardCopy.OtherPlayer = opponent;
                     
