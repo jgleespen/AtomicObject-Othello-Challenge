@@ -110,14 +110,13 @@ namespace ai.Board
             int col = coord.Col;
             var result = 0;
             var flip = 0;
-            var bestMove = new Coordinate(row, col);
             
             //Check south
             if (board.CheckToFlip(row - 1, col, -1, 0))
             {
                 flip = board.Flip(row - 1, col, -1, 0);
                 if (flip > result)
-                    result = flip;
+                    result =+ flip;
             }
 
             //Check north
@@ -125,7 +124,7 @@ namespace ai.Board
             {
                 flip = board.Flip(row + 1, col, 1, 0);
                 if (flip > result)
-                    result = flip;
+                    result += flip;
             }
 
             //Check west
@@ -134,7 +133,7 @@ namespace ai.Board
                 
                 flip = board.Flip(row, col - 1, 0, -1);
                 if (flip > result)
-                    result = flip;
+                    result += flip;
             }
 
             //Check east
@@ -142,7 +141,7 @@ namespace ai.Board
             {
                 board.Flip(row, col + 1, 0, 1);
                 if (flip > result)
-                    result = flip;
+                    result += flip;
             }
 
             //Check south west
@@ -150,7 +149,7 @@ namespace ai.Board
             {
                 board.Flip(row - 1, col - 1, -1, -1);
                 if (flip > result)
-                    result = flip;
+                    result += flip;
 
             }
 
@@ -159,7 +158,7 @@ namespace ai.Board
             {
                 board.Flip(row + 1, col - 1, 1, -1);
                 if (flip > result)
-                    result = flip;
+                    result += flip;
             }
 
             //Check south east
@@ -167,7 +166,7 @@ namespace ai.Board
             {
                 board.Flip(row - 1, col + 1, -1, 1);
                 if (flip > result)
-                    result = flip;
+                    result += flip;
             }
 
             //Check south west
@@ -175,7 +174,7 @@ namespace ai.Board
             {
                 board.Flip(row + 1, col + 1, 1, 1);
                 if (flip > result)
-                    result = flip;
+                    result += flip;
             }
 
             return result;
