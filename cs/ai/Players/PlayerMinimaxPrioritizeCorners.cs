@@ -10,7 +10,7 @@ namespace ai.Players
         {
             var board = new Board.Board(gameMessage.player, gameMessage.board);
             
-            var legalMoves = board.FindAllLegalMoves();
+            var legalMoves = board.FindAllLegalMoves(board.Player, board.OtherPlayer);
             var pickCorner = CheckCorner(legalMoves);
             
             if (pickCorner.Row != -1)

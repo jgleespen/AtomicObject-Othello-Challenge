@@ -18,6 +18,8 @@ namespace ai.Board
          If our player is found - return true*/
         public static bool CheckMove(
             this Board board,
+            int player,
+            int opponent,
             int changeInRow,
             int changeInCol,
             int row,
@@ -26,12 +28,12 @@ namespace ai.Board
         {
             while (true)
             {
-                if (board.GameBoard[row][col] == board.Player)
+                if (board.GameBoard[row][col] == player)
                 {
                     return true;
                 }
 
-                if (board.GameBoard[row][col] != board.OtherPlayer)
+                if (board.GameBoard[row][col] != opponent)
                 {
                     return false;
                 }
@@ -47,6 +49,8 @@ namespace ai.Board
         Also checks for space to make a move 2 places away from board[row, col]*/
         public static bool CheckNextSpaceForEnemy(
             this Board board,
+            int player,
+            int opponent,
             int changeInRow,
             int changeInCol,
             int row,
@@ -56,7 +60,7 @@ namespace ai.Board
             //Check that we are not searching for valid moves out of bounds to avoid null pointer
             if (InBounds(row + changeInRow, col + changeInCol)) return false;
 
-            if (board.GameBoard[row + changeInRow][col + changeInCol] != board.OtherPlayer) return false;
+            if (board.GameBoard[row + changeInRow][col + changeInCol] != opponent) return false;
 
             if (InBounds(row + changeInRow + changeInRow, col + changeInCol + changeInCol)) return false;
 
@@ -66,6 +70,8 @@ namespace ai.Board
              if each place is held by the opposing player.*/
             return CheckMove(
                 board,
+                player,
+                opponent,
                 changeInRow,
                 changeInCol,
                 row + changeInRow + changeInRow,
@@ -74,7 +80,9 @@ namespace ai.Board
         }
 
         public static List<Coordinate> FindAllLegalMoves(
-            this Board board
+            this Board board,
+            int player,
+            int opponent
         )
         {
             var legalMoves = new List<Coordinate>();
@@ -88,56 +96,56 @@ namespace ai.Board
                     if (board.GameBoard[row][col] == 0)
                     {
                         //Check northwest path
-                        if (board.CheckNextSpaceForEnemy(-1, -1, row, col))
+                        if (board.CheckNextSpaceForEnemy(player, opponent,-1, -1, row, col))
                         {
                             legalMoves.Add(new Coordinate(row, col));
                             continue;
                         }
 
                         //Check north path
-                        if (board.CheckNextSpaceForEnemy(-1, 0, row, col))
+                        if (board.CheckNextSpaceForEnemy(player, opponent,-1, 0, row, col))
                         {
                             legalMoves.Add(new Coordinate(row, col));
                             continue;
                         }
 
                         //Check northeast path
-                        if (board.CheckNextSpaceForEnemy(-1, 1, row, col))
+                        if (board.CheckNextSpaceForEnemy(player, opponent, -1, 1, row, col))
                         {
                             legalMoves.Add(new Coordinate(row, col));
                             continue;
                         }
 
                         //Check western path
-                        if (board.CheckNextSpaceForEnemy(0, -1, row, col))
+                        if (board.CheckNextSpaceForEnemy(player, opponent,0, -1, row, col))
                         {
                             legalMoves.Add(new Coordinate(row, col));
                             continue;
                         }
 
                         //Check eastern path
-                        if (board.CheckNextSpaceForEnemy(0, 1, row, col))
+                        if (board.CheckNextSpaceForEnemy(player, opponent,0, 1, row, col))
                         {
                             legalMoves.Add(new Coordinate(row, col));
                             continue;
                         }
 
                         //Check southwest path
-                        if (board.CheckNextSpaceForEnemy(1, -1, row, col))
+                        if (board.CheckNextSpaceForEnemy(player, opponent, 1, -1, row, col))
                         {
                             legalMoves.Add(new Coordinate(row, col));
                             continue;
                         }
 
                         //Check southern path
-                        if (board.CheckNextSpaceForEnemy(1, 0, row, col))
+                        if (board.CheckNextSpaceForEnemy(player, opponent, 1, 0, row, col))
                         {
                             legalMoves.Add(new Coordinate(row, col));
                             continue;
                         }
 
                         //Check southeast path
-                        if (board.CheckNextSpaceForEnemy(1, 1, row, col))
+                        if (board.CheckNextSpaceForEnemy(player, opponent,1, 1, row, col))
                             legalMoves.Add(new Coordinate(row, col));
                     }
                 }

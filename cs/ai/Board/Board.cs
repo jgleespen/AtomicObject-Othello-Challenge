@@ -6,8 +6,8 @@ namespace ai.Board
     {
         public const int OtherPlayerDefault = 1;
         public int[][] GameBoard { get; }
-        public int Player { get; }
-        public int OtherPlayer { get; }
+        public int Player { get; set; }
+        public int OtherPlayer { get; set; }
 
         public Board(int player, int[][] board)
         {

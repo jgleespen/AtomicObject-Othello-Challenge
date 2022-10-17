@@ -15,7 +15,7 @@ namespace othello
     //java -jar othello.jar --p1-type random --p2-type remote --wait-for-ui
     class Program
     {
-        private const int DefaultPort = 1338;
+        private const int DefaultPort = 1337;
         
         private class Options
         {
@@ -88,9 +88,10 @@ namespace othello
                     {
                         var gameMessage = JsonConvert.DeserializeObject<GameMessage>(line);
                         
-                        var nextMove = PlayerMinimax.NextMove(gameMessage);
+                        // var nextMove = PlayerMinimax.NextMove(gameMessage);
                         // var nextMove = PlayerMinimaxPrioritizeCorners.NextMove(gameMessage);
                         // var nextMove = PlayerPrioritizeCornersRandom.NextMove(gameMessage);
+                        var nextMove = PlayerMostFlips.NextMove(gameMessage);
                         
                         var serialized = JsonConvert.SerializeObject(nextMove);
                         streamWriter.Write(serialized + "\n");

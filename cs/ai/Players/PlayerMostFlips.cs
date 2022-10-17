@@ -1,16 +1,17 @@
 ﻿using ai.Board;
 using ai.Board.Models;
-using static ai.Players.PlayerUtil.CornerSideRandomMovePicker;
+using static ai.Board.BoardMostFlipsExt;
 
 namespace ai.Players
 {
-    public static class PlayerPrioritizeCornersRandom
+    public class PlayerMostFlips
     {
         public static int[] NextMove(GameMessage gameMessage)
         {
             var board = new Board.Board(gameMessage.player, gameMessage.board);
             var legalMoves = board.FindAllLegalMoves(board.Player, board.OtherPlayer);
-            return PickMove(legalMoves, board.Player);
+
+            return board.MostFlips(legalMoves).ToArray();
         }
         
     }

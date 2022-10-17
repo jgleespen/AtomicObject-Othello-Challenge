@@ -7,17 +7,17 @@ namespace ai.Board
     public static class BoardMinimaxExt
     {
         //BRUH
-        private const int DepthLimit = 5;
+        private const int DepthLimit = 6;
 
         /*I implemented minimax using a heuristic that tests potential scores and then returns their difference
         This evaluates scores utilizing functions from PerformMoveOnBoard.cs to check possible moves*/
-        private static int MinimaxHeuristic(this Board board)
+        private static int MinimaxHeuristic(this Board board, int player)
         {
             var otherPlayer = 1;
             if (board.Player == 1)
                 otherPlayer = 2;
 
-            var playerScore = board.Score(board.Player);
+            var playerScore = board.Score(player);
             var otherPlayerScore = board.Score(otherPlayer);
             return (playerScore - otherPlayerScore);
         }
@@ -46,7 +46,7 @@ namespace ai.Board
         )
         {
             //Get a list of legal moves
-            var legalMoves = board.FindAllLegalMoves();
+            var legalMoves = board.FindAllLegalMoves(board.Player, board.OtherPlayer);
 
             var bestMoveValue = (long) -99999; //Holds best move value
             var bestCoord = legalMoves[0]; //Holds best coordinate
@@ -60,7 +60,7 @@ namespace ai.Board
                 boardCopy.DoMove(legalMoves[i]);
 
                 //Search for best move with call to MinimaxValue, starting at depth of 1
-                var minimaxValue = boardCopy.MinimaxValue(boardCopy.Player, 1);
+                var minimaxValue = boardCopy.MinimaxValue(boardCopy.Player, boardCopy.OtherPlayer,1);
 
                 //If we have found a better move value update bestMoveValue and bestCoord
                 if (minimaxValue > bestMoveValue)
@@ -78,6 +78,7 @@ namespace ai.Board
          maximum values for our player.*/
         private static Int64 MinimaxValue(
             this Board board,
+            int player,
             int currentPlayer,
             int depth
         )
@@ -85,7 +86,7 @@ namespace ai.Board
             //If we have reached our maximum desired search depth - evaluate score using Heuristic function
             if (depth == DepthLimit)
             {
-                return board.MinimaxHeuristic();
+                return board.MinimaxHeuristic(player);
             }
 
             /*Identify current player to make a move for their pieces
@@ -94,13 +95,17 @@ namespace ai.Board
             if (currentPlayer == 1)
                 opponent = 2;
 
+            // var temp = board.Player;
+            // board.Player = opponent;
+            // board.OtherPlayer = temp;
+            
             //Get list of legal moves for our 'opponent' to check for best result
-            var legalMoves = board.FindAllLegalMoves();
+            var legalMoves = board.FindAllLegalMoves(currentPlayer, opponent);
 
             //If there are no legal moves to make we need to skip the current players turn
             if (legalMoves.Count == 0)
             {
-                return board.MinimaxValue(opponent, depth + 1);
+                return board.MinimaxValue(player, opponent , depth + 1);
             }
             else
             {
@@ -108,7 +113,7 @@ namespace ai.Board
                 var bestMoveValue = (long) -99999;
 
                 //If currentPlayer is not our player, maximize 
-                if (board.Player != currentPlayer)
+                if (player != currentPlayer)
                     bestMoveValue = 99999;
 
                 for (var i = 0; i < legalMoves.Count; i++)
@@ -119,10 +124,10 @@ namespace ai.Board
                     boardCopy.DoMove(legalMoves[i]);
 
                     //Recursively call until depth is reached
-                    var minimaxValue = boardCopy.MinimaxValue(opponent, depth + 1);
+                    var minimaxValue = boardCopy.MinimaxValue(player, opponent, depth + 1);
 
                     //If we are on our player, update bestMoveValue with maximum value
-                    if (board.Player == currentPlayer)
+                    if (player == currentPlayer)
                     {
                         if (minimaxValue > bestMoveValue)
                             bestMoveValue = minimaxValue;

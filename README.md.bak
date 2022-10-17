@@ -29,11 +29,6 @@ Each bot depends on functions inside `ai.LegalMoveFunctions` to acquire a list o
 
 * Same as above but corner spots will always be taken.
 
-**MostFlips Bot**
-`ai.Players.PlayerMostFlips`
-
-* This player will look at every legal move and make the one that results in the greatest number of flips.
-
 ## Selecting Different Player
 
 * I left the other player models commented out in `Program.cs`, uncomment them to do runs and it should work by default.
